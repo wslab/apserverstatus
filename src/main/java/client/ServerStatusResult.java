@@ -29,7 +29,7 @@ public class ServerStatusResult {
 
 	@Override
 	public String toString() {
-		String result = "ServerStatusResult [serverName=" + serverName;
+		String result = "ServerStatusResult [serverName=" + serverName + "\n";
 		for (ServerStatusData ssd : data) {
 			result += "[" + ssd.toString() + "]\n";
 		}

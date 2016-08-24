@@ -99,7 +99,7 @@ public class StatStorage implements IStatStorage {
 			resultHash.put(minuteTimestampUtc - i * 60, new ServerStatusRecord(0, 0.0, 0.0));
 		}
 		if (minuteMap.containsKey(serverName)) {
-			minuteMap.get(serverName).forEach((key,value) -> { System.out.println("key: " + key + " value: " + value);
+			minuteMap.get(serverName).forEach((key,value) -> { // System.out.println("key: " + key + " value: " + value);
 					if ( key > earliestTimestampUtc && key <= minuteTimestampUtc ) {
 						resultHash.put(key, new ServerStatusRecord(minuteMap.get(serverName).get(key)));
 					}
@@ -133,7 +133,7 @@ public class StatStorage implements IStatStorage {
 			resultHash.put(minuteTimestampUtc - i * 3600, new ServerStatusRecord(0, 0.0, 0.0));
 		}
 		if (minuteMap.containsKey(serverName)) {
-			minuteMap.get(serverName).forEach((key,value) -> { System.out.println("key: " + key + " value: " + value);
+			minuteMap.get(serverName).forEach((key,value) -> { // System.out.println("key: " + key + " value: " + value);
 					if ( key > earliestTimestampUtc && key <= minuteTimestampUtc ) {
 						resultHash.put(key, new ServerStatusRecord(minuteMap.get(serverName).get(key)));
 					}
