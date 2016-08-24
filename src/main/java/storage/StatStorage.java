@@ -94,7 +94,6 @@ public class StatStorage implements IStatStorage {
 	public ServerStatusResult getDataForLast60Minutes(String serverName, long timestampUtc) {
 		long minuteTimestampUtc = (timestampUtc / 60) * 60;
 		long earliestTimestampUtc = minuteTimestampUtc - 3600;
-		logger.info("getdata60 timestampUtc: " + timestampUtc + " minuteTimestampUtc: " + minuteTimestampUtc);
 		HashMap<Long, ServerStatusRecord> resultHash = new HashMap<Long,ServerStatusRecord>();
 		for (int i = 0; i < 60; i++) {
 			resultHash.put(minuteTimestampUtc - i * 60, new ServerStatusRecord(0, 0.0, 0.0));
@@ -129,7 +128,6 @@ public class StatStorage implements IStatStorage {
 	public ServerStatusResult getDataForLast24Hours(String serverName, long timestampUtc) {
 		long minuteTimestampUtc = (timestampUtc / 3600) * 3600;
 		long earliestTimestampUtc = minuteTimestampUtc - 3600 * 24;
-		logger.info("getdata24 timestampUtc: " + timestampUtc + " minuteTimestampUtc: " + minuteTimestampUtc);
 		HashMap<Long, ServerStatusRecord> resultHash = new HashMap<Long,ServerStatusRecord>();
 		for (int i = 0; i < 24; i++) {
 			resultHash.put(minuteTimestampUtc - i * 3600, new ServerStatusRecord(0, 0.0, 0.0));

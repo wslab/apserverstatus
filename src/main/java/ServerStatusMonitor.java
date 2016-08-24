@@ -29,9 +29,9 @@ public class ServerStatusMonitor {
 		long end = System.currentTimeMillis();
 		logger.info("processed " + count + " messages in " + (end-start) + "ms (" + (60.0/((end-start)/(double)count)) +" messages per minute)");
 		ServerStatusResult result = storage.getDataForLast60Minutes("myserver");
-		//logger.info("result: " + result.toString());
+		logger.info("result: " + result.toString());
 		ServerStatusResult result2 = storage.getDataForLast60Minutes("myserver");
-		//logger.info("result2: " + result.toString());
+		logger.info("result2: " + result.toString());
 		queue.add(new QueuedServerStatusMessage("", 0.0, 0.0, -1L));
 		logger.info("Waiting for worker thread to finish");
 		try {
