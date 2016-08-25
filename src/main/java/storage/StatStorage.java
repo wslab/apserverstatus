@@ -99,8 +99,8 @@ public class StatStorage implements IStatStorage {
 			resultHash.put(minuteTimestampUtc - i * 60, new ServerStatusRecord(0, 0.0, 0.0));
 		}
 		if (minuteMap.containsKey(serverName)) {
-			minuteMap.get(serverName).forEach((key,value) -> { // System.out.println("key: " + key + " value: " + value);
-					if ( key > earliestTimestampUtc && key <= minuteTimestampUtc ) {
+			minuteMap.get(serverName).forEach((key,value) -> { //logger.info("key: " + key + " value: " + value);
+					if ( null != key && null != value && key > earliestTimestampUtc && key <= minuteTimestampUtc ) {
 						resultHash.put(key, new ServerStatusRecord(minuteMap.get(serverName).get(key)));
 					}
 				});
@@ -117,7 +117,7 @@ public class StatStorage implements IStatStorage {
 	 * @return ServerStatusResult with the data for this server for the last 24 hours
 	 */
 	public ServerStatusResult getDataForLast24Hours(String serverName) {
-		return getDataForLast60Minutes(serverName, System.currentTimeMillis() / 1000);
+		return getDataForLast24Hours(serverName, System.currentTimeMillis() / 1000);
 	}
 
 	/**
@@ -132,10 +132,10 @@ public class StatStorage implements IStatStorage {
 		for (int i = 0; i < 24; i++) {
 			resultHash.put(minuteTimestampUtc - i * 3600, new ServerStatusRecord(0, 0.0, 0.0));
 		}
-		if (minuteMap.containsKey(serverName)) {
-			minuteMap.get(serverName).forEach((key,value) -> { // System.out.println("key: " + key + " value: " + value);
-					if ( key > earliestTimestampUtc && key <= minuteTimestampUtc ) {
-						resultHash.put(key, new ServerStatusRecord(minuteMap.get(serverName).get(key)));
+		if (hourMap.containsKey(serverName)) {
+			hourMap.get(serverName).forEach((key,value) -> { // logger.info("key: " + key + " value: " + value);
+					if ( null != key && null != value && key > earliestTimestampUtc && key <= minuteTimestampUtc ) {
+						resultHash.put(key, new ServerStatusRecord(hourMap.get(serverName).get(key)));
 					}
 				});
 		}
